@@ -6,14 +6,14 @@ import 'chart.js/auto';
 const Dashboard = () => {
   const cityDrugData = [
     {
-      city: 'New York',
+      city: 'New Delhi',
       drugs: [
         { name: 'Aspirin', qualityScore: 92, inventory: 150, expiryDays: 180 },
         { name: 'Ibuprofen', qualityScore: 85, inventory: 100, expiryDays: 120 },
       ],
     },
     {
-      city: 'Los Angeles',
+      city: 'Mumbai',
       drugs: [
         { name: 'Paracetamol', qualityScore: 90, inventory: 130, expiryDays: 90 },
         { name: 'Amoxicillin', qualityScore: 88, inventory: 75, expiryDays: 45 },
@@ -22,10 +22,10 @@ const Dashboard = () => {
   ];
 
   const shipmentStatusData = [
-    { city: 'New York', progress: 80 },
-    { city: 'Los Angeles', progress: 60 },
-    { city: 'Chicago', progress: 90 },
-    { city: 'Houston', progress: 50 },
+    { city: 'New Delhi', progress: 80 },
+    { city: 'Mumbai', progress: 60 },
+    { city: 'Banglore', progress: 90 },
+    { city: 'Kolkata', progress: 50 },
   ];
 
   const blockchainTransactions = [
