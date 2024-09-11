@@ -10,7 +10,7 @@ const SignIn = () => {
   const handleSignIn = (e) => {
     e.preventDefault();
 
-    // Placeholder for actual authentication
+    // Placeholder for authentication logic
     if (email === 'user@pharmatrust.com' && password === 'password') {
       navigate('/dashboard');
     } else {

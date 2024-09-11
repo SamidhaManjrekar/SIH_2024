@@ -10,7 +10,7 @@ const SignUp = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
 
-    // Placeholder for actual sign-up logic
+    // Placeholder for sign-up logic
     if (email && password) {
       navigate('/dashboard');
     } else {

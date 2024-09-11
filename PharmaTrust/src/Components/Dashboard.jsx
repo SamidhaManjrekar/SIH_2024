@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box, Grid, Heading, Table, Thead, Tbody, Tr, Th, Td, GridItem } from '@chakra-ui/react';
 import { Bar, Line, Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
 
@@ -57,11 +58,7 @@ const Dashboard = () => {
       city.drugs.map((drug) => ({
         label: `${drug.name} Quality in ${city.city}`,
         data: [drug.qualityScore],
-        backgroundColor: [
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(153, 102, 255, 0.6)',
-        ],
+        backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(153, 102, 255, 0.6)'],
       }))
     ),
   };
@@ -89,23 +86,65 @@ const Dashboard = () => {
         data: cityDrugData.flatMap((city) =>
           city.drugs.map((drug) => drug.inventory)
         ),
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)',
-          'rgba(75, 192, 192, 0.6)',
-        ],
+        backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(75, 192, 192, 0.6)'],
       },
     ],
   };
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <Bar data={drugQualityData} />
-      <Line data={shipmentProgressData} />
-      <Pie data={inventoryData} />
-    </div>
+    <Box p={6}>
+      <Heading as="h1" size="xl" mb={6}>
+        Dashboard
+      </Heading>
+
+      <Grid
+        templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)']} 
+        gap={6}
+      >
+        <GridItem colSpan={1} bg="gray.50" p={4} borderRadius="md" boxShadow="md">
+          <Heading size="md" mb={4}>Drug Quality</Heading>
+          <Bar data={drugQualityData} />
+        </GridItem>
+
+        <GridItem colSpan={1} bg="gray.50" p={4} borderRadius="md" boxShadow="md">
+          <Heading size="md" mb={4}>Shipment Progress</Heading>
+          <Line data={shipmentProgressData} />
+        </GridItem>
+
+        <GridItem colSpan={1} bg="gray.50" p={4} borderRadius="md" boxShadow="md">
+          <Heading size="md" mb={4}>Inventory Levels</Heading>
+          <Pie data={inventoryData} />
+        </GridItem>
+      </Grid>
+
+      <Box mt={10} overflowX="auto">
+        <Heading as="h2" size="lg" mb={4}>
+          Blockchain Transactions
+        </Heading>
+        <Table variant="striped" colorScheme="teal" size="sm">
+          <Thead>
+            <Tr>
+              <Th>Transaction Hash</Th>
+              <Th>Timestamp</Th>
+              <Th>Sender</Th>
+              <Th>Receiver</Th>
+              <Th>Status</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {blockchainTransactions.map((tx) => (
+              <Tr key={tx.transactionHash}>
+                <Td>{tx.transactionHash}</Td>
+                <Td>{tx.timestamp}</Td>
+                <Td>{tx.sender}</Td>
+                <Td>{tx.receiver}</Td>
+                <Td>{tx.status}</Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </Box>
+    </Box>
   );
 };
 

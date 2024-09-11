@@ -4,7 +4,7 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 
 const Authentication = () => {
   const location = useLocation();
-  
+
   return (
     <Box
       display="flex"
