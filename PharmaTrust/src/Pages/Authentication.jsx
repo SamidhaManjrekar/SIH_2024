@@ -1,8 +1,10 @@
-import React from "react";
-import { Box, VStack, Heading, Text } from "@chakra-ui/react";
-import { Link, Outlet } from "react-router-dom";
+import React from 'react';
+import { Box, VStack, Heading, Text } from '@chakra-ui/react';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 
 const Authentication = () => {
+  const location = useLocation();
+  
   return (
     <Box
       display="flex"
@@ -18,7 +20,7 @@ const Authentication = () => {
         boxShadow="lg"
         bg="white"
         w="full"
-        maxW="md" // You can adjust this to control the max width
+        maxW="md"
       >
         <Heading>PharmaTrust</Heading>
         <Text>Secure Your Medical Data with Trust</Text>
@@ -27,17 +29,17 @@ const Authentication = () => {
 
         <Box pt={4}>
           <Text>
-            {window.location.pathname === "/signin" ? (
+            {location.pathname === '/signin' ? (
               <>
-                Don’t have an account?{" "}
-                <Link to="/signup" style={{ color: "teal" }}>
+                Don’t have an account?{' '}
+                <Link to="/signup" style={{ color: 'teal' }}>
                   Sign Up
                 </Link>
               </>
             ) : (
               <>
-                Already have an account?{" "}
-                <Link to="/signin" style={{ color: "teal" }}>
+                Already have an account?{' '}
+                <Link to="/signin" style={{ color: 'teal' }}>
                   Sign In
                 </Link>
               </>
